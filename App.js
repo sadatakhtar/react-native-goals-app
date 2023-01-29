@@ -14,6 +14,12 @@ export default function App() {
     ]);
   };
 
+  const deleteGoal = (id) => {
+    console.log("Deleted!");
+    setCourseGoals((courseGoals) => {
+      return courseGoals.filter((goal) => goal.id !== id);
+    });
+  };
   return (
     <View style={styles.appContainer}>
       <GoalInput btnHandler={btnClickHandler} />
@@ -21,7 +27,13 @@ export default function App() {
         <FlatList
           data={courseGoals}
           renderItem={(itemData) => {
-            return <GoalItem text={itemData.item.text} />;
+            return (
+              <GoalItem
+                text={itemData.item.text}
+                onDeleteItem={deleteGoal}
+                id={itemData.item.id}
+              />
+            );
           }}
           // NB: unique key - 'id' refers to the id in the object on line 25
           keyExtractor={(item, index) => {
