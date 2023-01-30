@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Pressable } from "react-native";
+import { StyleSheet, View, Text, Pressable, Modal } from "react-native";
 
 const GoalItem = ({ text, onDeleteItem, id }) => {
   return (
